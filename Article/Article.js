@@ -130,7 +130,7 @@ let card = (obj) => {
   article.append(par3);
   article.append(expandButton);
 
-  expandButton.addEventListener("click", event => {
+  expandButton.addEventListener("click", (event) => {
     article.classList.toggle('article-open');
     console.log("button event: " + event.target);
   })

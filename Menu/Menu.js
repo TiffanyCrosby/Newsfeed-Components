@@ -19,9 +19,47 @@ let menuItems = [
     </ul>
   </div>
 
-  The function takes an array as its only argument.
+  The function takes an array as its only argument.*/
+ 
+  //calling hamburger button HTML---
+let button = document.querySelector('.menu-button');
+let header = document.querySelector('.header');
 
-  Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
+function hamButton(menuItems) {
+
+  //creating list elements---
+  let menu = document.createElement('div');
+  let list = document.createElement('ul');
+
+//add class names--- 
+menu.classList.add('menu');
+
+  // attaching list together---
+  menu.appendChild(list);
+
+
+  //creating actual listItems---
+  menuItems.forEach(item=>{
+    let liList = document.createElement('li');
+    liList.textContent = item;
+    list.appendChild(liList);
+    })
+
+
+  return menu;
+}
+
+button.addEventListener("click", event => {
+  header.lastChild.classList.toggle('menu--open');
+});
+
+header.appendChild(hamButton(menuItems));
+
+
+// let buttonMenu = document.querySelector('.menu-button')
+// menuItems.map(a => buttonMenu.appendChild(menu));
+
+  /*Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
   Add those items to the <ul>
 
   Step 3: Using a DOM selector, select the menu button (the element with a class of 'menu-button') currently on the DOM.
