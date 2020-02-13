@@ -101,14 +101,62 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.*/
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+let card = (obj) => {
+  let article = document.createElement('div');
+  let heading = document.createElement('h2');
+  let date = document.createElement('p');
+  let par1 = document.createElement('p');
+  let par2 = document.createElement('p');
+  let par3 = document.createElement('p');
+  let expandButton = document.createElement('span');
 
-  Step 3: return the entire component.
+  article.classList.add('article');
+  date.classList.add('date');
+  expandButton.classList.add('expandButton');
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  heading.innerHTML = obj.title;
+  date.innerHTML = obj.date;
+  par1.innerHTML = obj.firstParagraph;
+  par2.innerHTML = obj.secondParagraph;
+  par3.innerHTML = obj.thirdParagraph;
+  expandButton.textContent = 'Click for Article';
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+  article.append(heading);
+  article.append(date);
+  article.append(par1);
+  article.append(par2);
+  article.append(par3);
+  article.append(expandButton);
 
-*/
+  expandButton.addEventListener("click", event => {
+    article.classList.toggle('article-open');
+    console.log("button event: " + event.target);
+  })
+
+  return article;
+}
+let entry = document.querySelector('.articles');
+// data.map(a => entry.append(card(a)));
+
+
+
+/* Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.*/
+
+
+/* Step 3: return the entire component.*/
+
+/* Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.*/
+
+/* Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.*/
+
+data.push({
+  title: `I Really Don't Know What to Write`,
+  date: 'January 7th, 2020',
+  firstParagraph: `My Son Likes dinosaurs and planes and wants to be an athlete.`,
+  secondParagraph: `My oldest daughter wants to be a teacher or cook`,
+  thirdParagraph: `My youngest daughter wants to be a dancer.`
+})
+
+data.map(a => entry.append(card(a)));
